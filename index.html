@@ -1,5 +1,99 @@
-<html>
-    <body>
-        hello world
-    </body>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Number Input</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+
+        <h1 class="text-2xl font-bold mb-4 text-center">Enter your Mobile Number</h1>
+
+        <form id="mobileForm">
+
+            <div class="mb-4 flex items-center">
+
+                <label for="mobile" class="block text-lg font-medium text-gray-700 mr-2">+65</label>
+
+                <input type="tel" id="mobile" name="mobile" required class="flex-grow p-2 border border-gray-300 rounded" placeholder="e.g. 91234567">
+
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Submit</button>
+
+        </form>
+
+    </div>
+
+
+
+    <script>
+
+        $(document).ready(function(){
+
+            var sasToken = 'YOUR_SAS_TOKEN';  // Set your SAS Token here
+
+            var queueURL = 'YOUR_QUEUE_URL';  // Set your Azure Queue URL here
+
+
+
+            $('#mobileForm').submit(function(event) {
+
+                event.preventDefault();
+
+                var mobileNumber = '+65' + $('#mobile').val().trim();
+
+                
+
+                $.ajax({
+
+                    url: queueURL + '?sv=' + sasToken, // Append SAS token to the queue URL
+
+                    type: 'POST',
+
+                    headers: {
+
+                        'x-ms-version': '2017-04-17',
+
+                        'Content-Type': 'application/xml'
+
+                    },
+
+                    data: '<QueueMessage><MessageText>' + btoa(mobileNumber) + '</MessageText></QueueMessage>',
+
+                    success: function() {
+
+                        window.location.href = 'https://8th.io/t/k47r4anv';
+
+                    },
+
+                    error: function(err) {
+
+                        alert('Error: ' + err.statusText);
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
 </html>
