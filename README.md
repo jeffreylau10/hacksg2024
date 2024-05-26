@@ -3,6 +3,9 @@ Hack Singapore 2024
 
 this is the repo for Team TBG submission RetireLah! for Hack Singapore 2024
 
+In this repo, you will have 
+1. Our presentation in PDF format
+
 Tech Stack
 <ul>Front End
  <li>Plain 'ol HTML</li>
