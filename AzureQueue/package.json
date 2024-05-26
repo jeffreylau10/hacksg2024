@@ -1,0 +1,21 @@
+{
+
+    "name": "QueueTriggeredFunction",
+  
+    "version": "1.0.0",
+  
+    "description": "",
+  
+    "main": "index.js",
+  
+    "dependencies": {
+  
+      "axios": "^0.24.0"
+  
+    },
+  
+    "author": "",
+  
+    "license": "ISC"
+  
+  }
