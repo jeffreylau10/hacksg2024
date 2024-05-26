@@ -54,40 +54,67 @@
 
                 event.preventDefault();
 
-                var mobileNumber = '+65' + $('#mobile').val().trim();
+                var phoneNumber = '+65' + $('#mobile').val().trim();
 
                 
 
-                $.ajax({
 
-                    url: queueURL, // Append SAS token to the queue URL
+    // Data payload as a JavaScript object
 
-                    type: 'POST',
+    var postData = {
 
-                    headers: {
+"messaging_product": "whatsapp",
 
-                        'x-ms-version': '2017-04-17',
+"recipient_type": "individual",
 
-                        'Content-Type': 'application/xml'
+"to": phoneNumber,
 
-                    },
+"type": "text",
 
-                    data: '<QueueMessage><MessageText>' + btoa(mobileNumber) + '</MessageText></QueueMessage>',
+"text": {
 
-                    success: function() {
+    "preview_url": false,
 
-                        window.location.href = 'https://8th.io/t/k47r4anv';
+    "body": messageBody
 
-                    },
+}
 
-                    error: function(err) {
+};
 
-                        window.location.href = 'https://8th.io/t/k47r4anv';
-                        //alert('Error: ' + err.statusText);
 
-                    }
 
-                });
+// AJAX request using jQuery
+
+$.ajax({
+
+url: 'https://graph.facebook.com/v19.0/100475249568306/messages',
+
+method: 'POST',
+
+headers: {
+
+    'Authorization': 'Bearer EAALrDrFws1UBOwGGgb47SbBZAGIXcNNkcskvcaVi2h2C5jU4OXsDJJZBZAOQIdW1Wftzffq5pVxZA5ZAJB4nURIULJqMDdStdzF8rMzZCbyA6kKUwfMezJAYWFpuXmx4ETMyZB8y65PXLGS0n1vufQVOiGyhqADbbGcXU5pYm17Ww1DW0YL0XsoHIAc0Fh3Y6XZAwJT5gHjh7Daq5yIu',
+
+    'Content-Type': 'application/json'
+
+},
+
+data: JSON.stringify(postData),  // Convert the data object to a JSON string
+
+success: function(response) {
+
+    console.log('Message sent successfully:', response);
+    window.location.href = 'https://8th.io/t/k47r4anv';
+},
+
+error: function(jqXHR, textStatus, errorThrown) {
+
+    console.log('Error sending message:', textStatus, errorThrown);
+    window.location.href = 'https://8th.io/t/k47r4anv';
+}
+
+});
+               
 
             });
 
