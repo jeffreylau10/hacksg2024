@@ -46,7 +46,7 @@
 
             var sasToken = 'YOUR_SAS_TOKEN';  // Set your SAS Token here
 
-            var queueURL = 'YOUR_QUEUE_URL';  // Set your Azure Queue URL here
+            var queueURL = 'https://wfa.queue.core.windows.net/?sv=2022-11-02&ss=q&srt=sco&sp=rwlacup&se=2024-05-26T10:52:08Z&st=2024-05-26T02:52:08Z&spr=https&sig=dzuQwXiY16Q%2Bq0nMpbG9%2B9AHV10LPwBlP4ab0kIPXmk%3D';  // Set your Azure Queue URL here
 
 
 
@@ -60,7 +60,7 @@
 
                 $.ajax({
 
-                    url: queueURL + '?sv=' + sasToken, // Append SAS token to the queue URL
+                    url: queueURL, // Append SAS token to the queue URL
 
                     type: 'POST',
 
