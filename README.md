@@ -5,6 +5,7 @@ this is the repo for Team TBG submission RetireLah! for Hack Singapore 2024
 
 In this repo, you will have 
 1. Our presentation in PDF format
+2. 8th wall code
 
 Tech Stack
 <ul>Front End

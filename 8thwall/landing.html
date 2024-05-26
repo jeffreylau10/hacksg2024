@@ -1,0 +1,82 @@
+<!-- Copyright (c) 2022 8th Wall, Inc. -->
+<!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
+
+<div class="over">
+    <span id="promptText">Click on DBS logo to start</span>
+  </div>
+  
+  <!-- Add the tap-place component to the scene so it has an effect -->
+  <a-scene
+    tap-place
+    landing-page
+    xrextras-loading
+    xrextras-runtime-error
+    renderer="colorManagement:true"
+    xrweb="
+      allowedDevices: any;
+      defaultEnvironmentFogIntensity: 0.5; 
+      defaultEnvironmentFloorTexture: #groundTex; 
+      defaultEnvironmentFloorColor: #FFF;
+      defaultEnvironmentSkyBottomColor: #B4C4CC; 
+      defaultEnvironmentSkyTopColor: #5ac8fa;
+      defaultEnvironmentSkyGradientStrength: 0.5;">
+  
+    <!-- We can define assets here to be loaded when A-Frame initializes -->
+    <a-assets>
+      <img id="map" src="assets/retirelahpoly.jpg">
+      <a-asset-item id="dbs" src="assets/dbs.glb"></a-asset-item>
+    </a-assets>
+  
+    <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
+    <a-camera
+      id="camera"
+      position="0 8 8"
+      raycaster="objects: .cantap"
+      cursor="
+        fuse: false;
+        rayOrigin: mouse;">
+    </a-camera>
+  
+    <a-entity
+      light="
+        type: directional;
+        intensity: 0.8;
+        castShadow: true;
+        shadowMapHeight:2048;
+        shadowMapWidth:2048;
+        shadowCameraTop: 40;
+        shadowCameraBottom: -40;
+        shadowCameraRight: 40;
+        shadowCameraLeft: -40;
+        target: #camera"
+      xrextras-attach="target: camera; offset: 8 15 4"
+      position="1 4.3 2.5"
+      shadow>
+    </a-entity>
+  
+    <a-light type="ambient" intensity="0.5"></a-light>
+  
+  
+  <a-plane id="mesh" src="#map" height="20" width="20" position="0 0 0" rotation="-90 0 0" class="" visible="true">
+    <!--<a-entity id="modelanchor" rotation="90 0 0">
+    <a-entity 
+      id="dbs" 
+      gltf-model="#dbs" 
+      class="cantap"     
+      scale="5 5 5" 
+      rotation=0 0 0"
+      position="0 0 0"
+      shadow="receive: false"
+      >
+      </a-entity>
+    </a-entity>-->
+    <!-- hub rotation 90/0/0 -->
+    <!-- dragon rotation 90/0/0 position 0/0/1.3 -->
+    <!-- boat -0.4 -->
+    <!-- AR thing 0.3 -->
+    <!--<a-entity rotation="90 0 0" position="0 0 0.2">
+      <a-entity id="model1" gltf-model="#purpleflower" position="0 0 0" rotation="0 0 0" animation="property: rotation; to: 0 720 0; loop: true; dur: 10000" scale="5 5 5"></a-entity>
+    </a-entity>-->
+  </a-plane>
+  </a-scene>
+  
